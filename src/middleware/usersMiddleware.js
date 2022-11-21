@@ -5,7 +5,6 @@ import { hashSync, compareSync } from "bcrypt"
 // VERIFICAR DADOS DO NOVO USUARIO PARA CADASTRO
 export async function validateSignUp(req, res, next) {
     const newUser = req.body
-    console.log(newUser.email)
 
     const signUpSchema = joi.object({
         nome: joi.string().required().min(3),
@@ -27,7 +26,7 @@ export async function validateSignUp(req, res, next) {
             return res.status(409).send({message: "Email já cadastrado"})
         }
     } catch (error) {
-        console.log(error)
+        res.send(error)
     }
 
     const encryptedPassword = hashSync(newUser.senha, 10)
@@ -70,7 +69,7 @@ export async function validateSignIn(req, res, next) {
         }
 
     } catch (error) {
-        console.log(error)
+       res.send(error)
     }
 
     //DELETANDO DADOS SENSÍVEIS

@@ -28,7 +28,7 @@ export async function signInUser(req, res){
         //Create new session login
         db.collection("sessions").insertOne(newSession)
     } catch(error){
-        console.log(error)
+        res.send(error)
     }
 
     res.send({ nome: user.nome, token})
@@ -44,7 +44,7 @@ export async function getUsers(req,res){
 
         res.send(users)
     } catch(error){
-        console.log(error)
+        res.send(error)
     }
 
 }

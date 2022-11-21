@@ -36,7 +36,7 @@ export async function validateDataUser(req, res, next) {
             return res.status(400).send("Token Inválido.")
         }
     } catch (error) {
-        console.log(error)
+        res.send(error)
     }
 
     //Data to register
@@ -64,7 +64,7 @@ export async function validateGetDataUsers(req, res, next) {
             return res.send("Token inválido")
         }
     } catch (error) {
-        console.log(error)
+        res.send(error)
     }
 
     //Take userID
